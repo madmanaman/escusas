@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manual de Escusas</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Estilos personalizados -->
+    <style>
+      body {
+        background-color: #121212; /* Fondo negro */
+        color: #f5f5f5; /* Texto blanco */
+        font-family: Arial, sans-serif;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+      }
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: #00d9ff; /* Título en azul celeste */
+      }
+      .output-box {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #1e1e1e; /* Caja de salida con gris oscuro */
+        color: #fff; /* Texto blanco */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        border-radius: 8px;
+      }
+      input {
+        max-width: 250px;
+        margin: auto;
+        background-color: #222; /* Input oscuro */
+        color: #fff; /* Texto blanco */
+        border: 1px solid #555;
+      }
+      input::placeholder {
+        color: #aaa;
+      }
+      .emoji {
+        font-size: 1.5rem;
+      }
+      button {
+        background-color: #00d9ff; /* Botón celeste */
+        color: #121212;
+        border: none;
+      }
+      button:hover {
+        background-color: #00b8e6; /* Efecto hover */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Título -->
+    <h1>Manual de Escusas</h1>
+
+    <!-- Input para ingresar el número -->
+    <div class="container">
+      <input
+        type="number"
+        id="numero"
+        class="form-control mb-3"
+        placeholder="Ingresa un número (1-99)"
+      />
+      <button class="btn btn-primary" onclick="mostrarExcusa()">
+        Buscar Escusa
+      </button>
+      <div id="output" class="output-box mt-3"></div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+      // Frases predefinidas
+      const excusas = {
+        1: "No tuve suficiente tiempo ⏰",
+        2: "Mi primera chamba 🎶",
+        3: "Esto me tomó 10 minutos, gracias ChatGPT 🤖",
+        69: "MMM, picaron@ 😏",
+      };
+
+      // Frases aleatorias
+      const frasesAleatorias = [
+        "Ups, ese número no tiene excusa asignada 🤷‍♂️",
+        "Creo que te equivocaste de número... otra vez 😅",
+        "¡Esa excusa aún está en producción! 🛠️",
+        "Ninguna excusa registrada para ese número... por ahora. 🤔",
+        "El perro se comió mi código 🐶",
+        "El servidor decidió tomarse el día libre 🛠️😅",
+        "Estaba en modo 'mañana lo termino' 💤",
+      ];
+
+      // Función para mostrar la excusa
+      function mostrarExcusa() {
+        const numero = document.getElementById("numero").value;
+        const output = document.getElementById("output");
+
+        // Verificar si el número tiene excusa predefinida
+        if (excusas[numero]) {
+          output.innerHTML = `<p>${excusas[numero]}</p>`;
+        } else if (numero >= 1 && numero <= 99) {
+          // Mostrar frase aleatoria si el número no tiene excusa específica
+          const randomIndex = Math.floor(
+            Math.random() * frasesAleatorias.length
+          );
+          output.innerHTML = `<p>${frasesAleatorias[randomIndex]}</p>`;
+        } else {
+          // Mensaje si el número no está en el rango permitido
+          output.innerHTML = `<p>Por favor, ingresa un número entre 1 y 99 🚨</p>`;
+        }
+      }
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
